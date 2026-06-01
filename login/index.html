@@ -1,0 +1,388 @@
+<!DOCTYPE html><html lang="en"><head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apollo AI</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.ico">
+    
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap-icons.min.css">
+    
+    <link rel="stylesheet" href="css/utilities.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+    
+
+    <main class="auth-page">
+        <div class="container d-flex flex-column justify-content-center flex-grow-1">
+             
+<style>
+    /* Importação da fonte Inter usada no React */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+    /* Oculta o rodapé global que vem do base.html especificamente nesta tela */
+    .app-footer {
+        display: none !important;
+    }
+
+    /* Utilitários de Tipografia do React */
+    .font-display { font-family: 'Inter', sans-serif; font-weight: 700; letter-spacing: -0.03em; }
+    .font-heading { font-family: 'Inter', sans-serif; font-weight: 600; letter-spacing: -0.01em; }
+    .font-body { font-family: 'Inter', sans-serif; font-weight: 400; }
+
+    /* Fixa o fundo escuro do React caso o Base traga outra cor */
+    body {
+        background-color: #0F172A !important;
+    }
+
+    /* Subtle gradient overlay idêntico ao Login.tsx */
+    .login-gradient-overlay {
+        position: fixed;
+        inset: 0;
+        background: linear-gradient(to bottom right, rgba(30, 58, 138, 0.1), transparent, rgba(59, 130, 246, 0.05));
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    /* Logo Section */
+    .logo-box {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 4rem; /* w-16 */
+        height: 4rem; /* h-16 */
+        border-radius: 1rem; /* rounded-2xl */
+        background: linear-gradient(to bottom right, #1E3A8A, #3B82F6);
+        box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.25); /* shadow-blue */
+        margin-bottom: 1.5rem; /* mb-6 */
+    }
+
+    .apollo-title {
+        color: #F8FAFC !important; /* text-foreground */
+        font-size: 3.5rem; /* text-5xl/6xl */
+        margin-bottom: 0.75rem; /* mb-3 */
+        line-height: 1;
+    }
+
+    .apollo-subtitle {
+        color: #FFFFFF !important;
+        font-size: 0.875rem; /* text-sm */
+        font-weight: 500;
+        letter-spacing: 0.025em; /* tracking-wide */
+        text-transform: uppercase;
+    }
+
+    /* Card de Login */
+    .react-login-card {
+        background-color: rgba(30, 41, 59, 0.8) !important; /* bg-card/80 */
+        backdrop-filter: blur(4px); /* backdrop-blur-sm */
+        -webkit-backdrop-filter: blur(4px);
+        border: 1px solid rgba(59, 130, 246, 0.2) !important; /* border-border */
+        border-radius: 1rem !important; /* rounded-2xl */
+        padding: 2rem !important; /* p-8 */
+        /* shadow-elegant-lg */
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(59, 130, 246, 0.1) !important;
+        width: 100%;
+        max-width: 28rem; /* max-w-md */
+        margin: 0 auto;
+        position: relative;
+        z-index: 10;
+    }
+
+    /* Inputs e Forms */
+    .react-label {
+        display: block;
+        color: #F8FAFC !important;
+        font-size: 0.875rem; /* text-sm */
+        margin-bottom: 0.75rem; /* mb-3 */
+    }
+
+    .input-wrapper {
+        position: relative;
+    }
+
+    .input-icon {
+        position: absolute;
+        left: 1rem; /* left-4 */
+        top: 50%;
+        transform: translateY(-50%);
+        color: #94A3B8; /* text-muted-foreground */
+        font-size: 1rem; /* h-4 w-4 equivalent */
+        z-index: 10;
+    }
+
+    .react-input {
+        background-color: rgba(15, 23, 42, 0.5) !important; /* bg-background/50 */
+        border: 1px solid rgba(59, 130, 246, 0.2) !important; /* border-border */
+        color: #F8FAFC !important; /* text-foreground */
+        height: 3rem !important; /* h-12 */
+        border-radius: 0.75rem !important; /* rounded-xl */
+        padding-left: 2.75rem !important; /* pl-11 */
+        width: 100%;
+        transition: all 0.2s;
+    }
+
+    .react-input:focus {
+        border-color: #3B82F6 !important;
+        box-shadow: 0 0 0 1px #3B82F6 !important;
+        outline: none;
+    }
+
+    .react-input::placeholder {
+        color: #94A3B8 !important; /* placeholder:text-muted-foreground */
+    }
+
+    /* Remove fundo do Chrome ao autocompletar */
+    .react-input:-webkit-autofill,
+    .react-input:-webkit-autofill:hover, 
+    .react-input:-webkit-autofill:focus, 
+    .react-input:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0 30px #131B2D inset !important;
+        -webkit-text-fill-color: #F8FAFC !important;
+        transition: background-color 5000s ease-in-out 0s;
+    }
+
+    /* Forgot Password Link */
+    .forgot-link {
+        color: #3B82F6;
+        font-size: 0.75rem; /* text-xs */
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+
+    .forgot-link:hover {
+        color: #60A5FA;
+    }
+
+    /* Submit Button */
+    .react-btn {
+        background: linear-gradient(to right, #1E3A8A, #3B82F6) !important; /* from-[#1E3A8A] to-[#3B82F6] */
+        color: white !important;
+        font-size: 1rem; /* text-base */
+        padding: 0.75rem 1rem !important; 
+        height: 3.5rem; /* py-6 match */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.75rem !important; /* rounded-xl */
+        border: none !important;
+        box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.25) !important; /* shadow-blue */
+        transition: all 0.2s ease;
+        width: 100%;
+        cursor: pointer;
+    }
+
+    .react-btn:hover {
+        background: linear-gradient(to right, #1E40AF, #2563EB) !important; /* hover:from-[#1E40AF] hover:to-[#2563EB] */
+    }
+
+    .react-btn i {
+        font-size: 1.25rem; /* h-5 w-5 */
+        margin-left: 0.5rem;
+    }
+
+    /* Links de Rodapé */
+    .support-link {
+        color: #94A3B8; /* text-muted-foreground */
+        font-size: 0.75rem; /* text-xs */
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        transition: color 0.2s;
+    }
+    
+    .support-link:hover {
+        color: #FFFFFF;
+    }
+
+    .legal-text {
+        color: #64748B; /* text-slate-500 equivalent */
+        font-size: 0.72rem; /* Levemente reduzido para garantir que caiba */
+        white-space: nowrap; /* FORÇA O TEXTO A FICAR EM UMA ÚNICA LINHA */
+    }
+
+    .legal-text a {
+        color: inherit;
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+
+    .legal-text a:hover {
+        color: #CBD5E1; /* hover:text-slate-300 */
+    }
+
+    .divider-top {
+        border-top: 1px solid rgba(59, 130, 246, 0.2); /* border-border */
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+    }
+</style>
+
+<div class="login-gradient-overlay"></div>
+
+<div class="d-flex flex-column align-items-center justify-content-center w-100" style="min-height: 85vh; padding: 3rem 1rem; position: relative; z-index: 10;">
+    
+    <div class="text-center mb-5">
+        <div class="logo-box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"></path>
+                <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"></path>
+                <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"></path>
+                <path d="M10 6h4"></path>
+                <path d="M10 10h4"></path>
+                <path d="M10 14h4"></path>
+                <path d="M10 18h4"></path>
+            </svg>
+        </div>
+        <h1 class="apollo-title font-display">Apollo AI</h1>
+        <p class="apollo-subtitle font-body">Professional Platform</p>
+    </div>
+
+    <div class="react-login-card">
+        
+        
+        <form id="apollo-login-form" method="POST" class="font-body">
+            <input type="hidden" name="csrfmiddlewaretoken" value="57iDpV973PniRvvpJz7pmTfQFuUcb8jRfD5hTe0vb6Pr0bp54U99okMQjdI8zE4Z">
+            
+            
+
+            <div class="mb-4">
+                <label class="react-label font-heading">Email Address</label>
+                <div class="input-wrapper">
+                    <i class="bi bi-envelope input-icon"></i>
+                    <input type="text" name="username" class="form-control react-input shadow-none" placeholder="your.email@company.com" required="" autofocus="">
+                </div>
+            </div>
+
+            <div class="mb-4 pb-2">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <label class="react-label font-heading mb-0">Password</label>
+                    <a href="/password-reset/" class="forgot-link font-body">Forgot password?</a>
+                </div>
+                <div class="input-wrapper">
+                    <i class="bi bi-lock input-icon"></i>
+                    <input type="password" name="password" class="form-control react-input shadow-none" placeholder="••••••••" required="">
+                </div>
+            </div>
+            
+            <button type="submit" class="react-btn font-heading">
+                Sign In <i class="bi bi-chevron-right"></i>
+            </button>
+        </form>
+
+        <div class="divider-top d-flex justify-content-center">
+            <a href="/support-ticket/" class="support-link font-body">
+                <i class="bi bi-life-preserver me-2" style="font-size: 0.875rem;"></i> Need help? Contact Support
+            </a>
+        </div>
+
+        <div class="mt-4 text-center legal-text font-body">
+            By logging in, you agree to our <a href="/terms/">Terms of Service</a> and <a href="/privacy-policy/">Privacy Policy</a>.
+        </div>
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('apollo-login-form');
+        const submitBtn = form.querySelector('button[type="submit"]');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(form);
+            const email = formData.get('username');
+            
+            const originalBtnHtml = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = 'Authenticating... <i class="bi bi-hourglass-split"></i>';
+
+            try {
+                // 1. Pergunta ao Backend se este e-mail é uma exceção
+                const routeRes = await fetch('/api/check-routing/', {
+                    method: 'POST',
+                    headers: { 
+                        'Content-Type': 'application/json', 
+                        'X-CSRFToken': formData.get('csrfmiddlewaretoken') 
+                    },
+                    body: JSON.stringify({ email: email })
+                });
+                const routeData = await routeRes.json();
+
+                // 2. Se não for exceção, o backend manda usar o túnel
+                if (routeData.action === 'tunnel') {
+                    
+                    // O Nginx assume o controle aqui (como já estava funcionando)
+                    const loginRes = await fetch('/api/black-login', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ 
+                            email: email, 
+                            password: formData.get('password') 
+                        })
+                    });
+                    
+                    if (loginRes.ok) {
+                        const loginData = await loginRes.json();
+                        
+                        // DEFESA ANTI-LOOP: Se o Black App mandou ejetar de volta, obedece!
+                        if (loginData.sso_redirect_url) {
+                            window.location.href = loginData.sso_redirect_url;
+                            return;
+                        }
+
+                        // Se tiver token normal, vai pro dashboard do Black App
+                        if (loginData.token) {
+                            window.location.href = `${routeData.redirect_url}?token=${loginData.token}`;
+                            return;
+                        }
+                    }
+                }
+                
+                // 3. Fallback: Se for 'local' ou se o login no túnel falhou (senha errada/não existe)
+                submitBtn.innerHTML = originalBtnHtml;
+                submitBtn.disabled = false;
+                form.submit();
+
+            } catch (error) {
+                // Em caso de falha de rede, submete via Django nativo
+                submitBtn.innerHTML = originalBtnHtml;
+                submitBtn.disabled = false;
+                form.submit();
+            }
+        });
+    });
+</script>
+
+        </div>
+    </main>
+
+    
+    
+    <footer class="app-footer">
+        <div class="footer-links">
+            <a href="/terms/">Terms of Service</a>
+            <span>�</span>
+            <a href="/privacy-policy/">Privacy Policy</a>
+        </div>
+        <div class="footer-copyright">
+            � 2026 Apollo AI. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/navigation.js"></script>
+    <script>
+        window.APP_STATE = {
+            isPro: "false" === "true",
+            usageDays: parseInt("0", 10)
+        };
+    </script>
+    
+    
+
+</body></html>

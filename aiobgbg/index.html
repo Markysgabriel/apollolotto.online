@@ -1,0 +1,364 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You!</title>
+    
+<!--PRELOAD-->
+    <script>!function (i, n) { i._plt = i._plt || (n && n.timeOrigin ? n.timeOrigin + n.now() : Date.now()) }(window, performance);</script>
+    <link rel="preload" href="https://scripts.converteai.net/0c720c90-e7e2-43bb-bf68-a9f95307d607/players/69ab3e08a61fe7c3c1dba04f/v4/player.js" as="script">
+    <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+    <link rel="preload" href="https://cdn.converteai.net/0c720c90-e7e2-43bb-bf68-a9f95307d607/69ab3e006e1bd68075abc385/main.m3u8" as="fetch">
+    <link rel="dns-prefetch" href="https://cdn.converteai.net">
+    <link rel="dns-prefetch" href="https://scripts.converteai.net">
+    <link rel="dns-prefetch" href="https://images.converteai.net">
+    <link rel="dns-prefetch" href="https://api.vturb.com.br">
+    <!--PRELOAD-->
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #FFF;
+            overflow-x: hidden;
+            overflow-wrap: break-word;
+        }
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: black;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #ffffff;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            word-break: break-word;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        .logo {
+            max-width: 200px;
+            margin: 20px 0;
+        }
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #2980b9;
+            color: white;
+            text-align: center;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .button:hover {
+            background-color: #3498db;
+        }
+        footer {
+            background-color: #000000;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+            bottom: 0;
+        }
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Estilo para a seção de garantia */
+        .guarantee-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 40px 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+        }
+        .guarantee-section img {
+            max-width: 150px; /* Tamanho razoável para a imagem */
+            margin-right: 20px;
+        }
+        .guarantee-section .text {
+            text-align: left;
+            max-width: 600px;
+        }
+        .guarantee-section h2 {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .guarantee-section p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Seção Need Assistance */
+        .support-section {
+            margin: 32px 0;
+            padding: 24px 20px;
+            text-align: center;
+        }
+        .support-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .support-emoji {
+            font-size: 2rem;
+            line-height: 1;
+        }
+        .support-title {
+            color: #FFF;
+            font-size: 1.75rem;
+            font-weight: bold;
+            margin: 0;
+        }
+        .support-desc {
+            color: #FFF;
+            font-size: 1.05rem;
+            line-height: 1.5;
+            max-width: 520px;
+            margin: 0 auto 20px;
+        }
+        .support-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            align-items: center;
+        }
+        .support-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-width: 280px;
+            padding: 12px 20px;
+            background-color: #8bc34a;
+            color: #000;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border-radius: 999px;
+            transition: background-color 0.2s, opacity 0.2s;
+        }
+        .support-btn:hover {
+            background-color: #7cb342;
+            opacity: 0.95;
+        }
+        .support-btn:focus {
+            outline: 2px solid #000;
+            outline-offset: 2px;
+        }
+        .support-btn-icon {
+            font-size: 1.1rem;
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px auto;
+                padding: 15px;
+                width: 95%;
+            }
+            h1 {
+                font-size: 1.6rem;
+            }
+            .guarantee-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            .guarantee-section img {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            .guarantee-section .text {
+                text-align: center;
+            }
+            .support-buttons {
+                flex-direction: column;
+            }
+            .support-btn {
+                width: 100%;
+                max-width: 320px;
+                justify-content: center;
+            }
+            footer div {
+                line-height: 2;
+            }
+        }
+        #disclaimer {
+            display: block;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+        
+        /* Estilo para a box de informações (Login e Senha) */
+        .info-box {
+            background-color: #ffffff;
+            border: 1px solid #eaeaea;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 10px auto 30px auto;
+            max-width: 600px;
+            text-align: left;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .info-box-badge {
+            display: inline-block;
+            background-color: #fdf3d8;
+            border: 1px solid #f6e3b5;
+            color: #b58105;
+            font-size: 0.85rem;
+            font-weight: bold;
+            padding: 6px 12px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .info-box-text {
+            font-size: 1.1rem;
+            color: #2c3e50;
+            margin: 10px 0;
+            line-height: 1.5;
+        }
+
+        .info-box-text strong {
+            color: #b58105;
+            font-weight: 600;
+        }
+
+        .info-box-divider {
+            height: 1px;
+            background-color: #f0f0f0;
+            margin: 15px 0;
+            border: none;
+        }
+    </style>
+    
+    <!--Script Plataforma inicio-->
+    
+    
+    <!--Script Plataforma Fim-->
+<script src="js/player.js" async=""></script>
+
+
+<!-- BUYGOODS -->
+<script>var mysrc = "https://tracking.buygoods.com/track/?a=12559&firstcookie=0"+"&tracking_redirect=&referrer="+encodeURIComponent(document.referrer)+"&sessid2="+ReadCookie('sessid2')+"&product=pos_u1&vid1=&vid2=&vid3=&caller_url="+encodeURIComponent(window.location.href); if(typeof add_to_cart !== 'undefined') { mysrc = mysrc+'&add_to_cart='+add_to_cart; } var newScript = document.createElement('script'); newScript.type = 'text/javascript'; newScript.defer = true; newScript.src = mysrc; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(newScript, s); function ReadCookie(name){name += '='; var parts = document.cookie.split(/;\s*/);for (var i = 0; i < parts.length; i++) {var part = parts[i]; if (part.indexOf(name) == 0) return part.substring(name.length)} return '';}</script>
+
+<script type="text/javascript">var i = document.createElement("iframe"),oid = new URLSearchParams(window.location.search);i.async = true;i.style="display:none";i.setAttribute("src", "https://buygoods.com/affiliates/go/conversion/iframe/bg?a=12559&t=613eff879764ea7668507debd597d3ca&conversion=1&s="+ReadCookie('sessid2')+"&o="+oid.get('order_id_global')+"&ut="+oid.get('token'));document.body.appendChild(i);</script>
+<!-- BUYGOODS -->
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>CONGRATULATIONS!</h1>
+        
+        <!-- Logo Image -->
+        <img src="images/lotto.png" alt="Logo" class="logo">
+        
+
+        <p>Your access has been successfully activated. <br>Here’s how to access your product.</p>
+        <p><strong>IMPORTANT:</strong> On your bank statement you will see a charge from Digistore24.</p>
+
+ <!-- VIDEO  -->
+        <div class="video-session" style="margin: 40px 0; text-align: center;">
+            <vturb-smartplayer id="vid-69ab3e08a61fe7c3c1dba04f" style="display: block; margin: 0 auto; width: 100%; "></vturb-smartplayer>
+            <script type="text/javascript">
+                var s = document.createElement("script");
+                s.src = "https://scripts.converteai.net/0c720c90-e7e2-43bb-bf68-a9f95307d607/players/69ab3e08a61fe7c3c1dba04f/v4/player.js",
+                    s.async = !0, document.head.appendChild(s);
+            </script>
+        </div>
+        <!-- VIDEO  -->
+
+        
+        <!-- Info Box de Login e Senha -->
+        <div class="info-box">
+            <span class="info-box-badge">IMPORTANT</span>
+            <p class="info-box-text">Your login is the <strong>email</strong> you used for the purchase</p>
+            <hr class="info-box-divider">
+            <p class="info-box-text">Your <strong>password</strong> is: <strong>12345</strong> (unless you have made a
+                change)</p>
+        </div>
+        <!-- Info Box de Login e Senha -->
+        
+        <!-- Seção Need Assistance -->
+        <div class="support-section">
+            <div class="support-header">
+                <span class="support-emoji" aria-hidden="true">💬</span>
+                <h2 class="support-title">Need Assistance?</h2>
+            </div>
+            <p class="support-desc">If you have any questions or need help with your order, our support team is ready to assist you.</p>
+            <div class="support-buttons">
+                <a href="mailto:supportapollo98@gmail.com" class="support-btn support-btn-email">
+                    <span class="support-btn-icon">✉</span>
+                    Email: supportapollo98@gmail.com
+                </a>
+                
+                
+            </div>
+        </div>
+        <p><strong>IMPORTANT!</strong><br>In 1 hour I will send you an email from our official account with sender: <strong> <a class="__cf_email__" href="mailto:supportapollo98@gmail.com">supportapollo98@gmail.com</a></strong>, with all the details about the delivery of your purchase.</p>
+        
+        <p>To ensure that you receive all the details about the delivery of your product, follow the instructions according to your email provider.</p>
+
+        <!-- Seção de Garantia -->
+        <div class="guarantee-section">
+            <img src="images/garantia.webp" alt="Guarantee Image">
+            <div class="text">
+                <h2>60-DAY MONEY BACK GUARANTEE 100% SATISFACTION GUARANTEED</h2>
+                <p>Apollo AI comes with a 100% money back guarantee - 60 full days from your original purchase. If you're not totally and completely satisfied with our product or your results within the first 60 days simply let us know by dropping us an email and we'll gladly give you a full refund within 48 hours.</p>
+            </div>
+        </div>
+        
+        <div>
+    <br>
+      
+    </div>
+    </div>
+    <footer>
+        <p style="text-align: center;">© 2026 Apollo AI - All Rights Reserved</p>
+        <div>
+                <a href="#" target="_blank">Privacy Policy</a> |
+                <a href="#" target="_blank">Terms & Conditions</a> |
+                <a href="#" target="_blank">Contact Us</a> |
+                <a href="#" target="_blank">Disclaimer</a> |
+                
+            </div>
+           
+
+    </footer>
+    
+    
+    
+<script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" data-cf-beacon="{" version":"2024.11.0","token":"df440e7f259149d0a0aea1f850e041ed","r":1,"server_timing":{"name":{"cfcachestatus":true,"cfedge":true,"cfextpri":true,"cfl4":true,"cforigin":true,"cfspeedbrain":true},"location_startswith":null}}"="" crossorigin="anonymous"></script>
+
+</body></html>
